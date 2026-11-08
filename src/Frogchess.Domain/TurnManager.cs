@@ -63,7 +63,7 @@ namespace Frogchess.Domain
                 var (x, y) = frogToRemove.Value;
 
                 // Удаление только на первом ходу
-                if (board.IsValidPosition(x, y) && isFirstMoveForPlayer)
+                if (board.IsValidPosition(x, y) && !board.IsEmptyCell(x, y) && isFirstMoveForPlayer)
                     board.RemoveFrog(x, y);
                 else
                     return Error.Unexpected("TurnManager.FrogRemovalIsNotPossible", "Frog removal is not possible.");
